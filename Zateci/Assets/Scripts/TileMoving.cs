@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TileMoving : MonoBehaviour
 {
     RectTransform tiles_position;
-    Vector3 move_distance = new(-6.5f, 8.8f);
+    Vector3 move_distance = new(-6.3f, 8.8f);
 
 
     // Start is called before the first frame update
@@ -18,12 +18,14 @@ public class TileMoving : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+//      tiles_position.Translate(new Vector3(-6.3f, 0.2f));
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             ChoosePrevious();
         }
         if (Input.GetKeyDown(KeyCode.RightArrow)) 
-        { 
+        {
+
             ChooseNext(); 
         }
     }
