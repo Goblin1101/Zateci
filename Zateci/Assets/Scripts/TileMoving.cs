@@ -37,7 +37,7 @@ public class TileMoving : MonoBehaviour
         }
         if (clicked > 1 && Time.time - clicktime < clickdelay)
         {
-            //    Debug.Log("dasda"); 
+                Debug.Log("dasda"); 
             clicked = 0;
             clicktime = 0;
             isDoubleClicked = true;
@@ -53,8 +53,8 @@ public class TileMoving : MonoBehaviour
         if (Input.GetMouseButton(0) && isDoubleClicked)
         {
 
-            if (content_position.localPosition.y < 13) { content_position.Translate(new Vector3(0, 13f - content_position.localPosition.y)); }
-            if (content_position.localPosition.y > 25) { content_position.Translate(new Vector3(0, - (content_position.localPosition.y - 25f))); }
+            if (content_position.localPosition.y < 13) { content_position.Translate(new Vector3(0, 13f - content_position.localPosition.y));Debug.Log("¬низ"); }
+            if (content_position.localPosition.y > 25) { content_position.Translate(new Vector3(0, - (content_position.localPosition.y - 25f))); Debug.Log("¬верх"); }
 
             if ((current_porition != prev_position) && content_position.localPosition.y >= 13f && content_position.localPosition.y <= 25.0f)
             {
