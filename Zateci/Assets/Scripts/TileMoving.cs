@@ -37,7 +37,7 @@ public class TileMoving : MonoBehaviour
         }
         if (clicked > 1 && Time.time - clicktime < clickdelay)
         {
-                Debug.Log("dasda"); 
+          //Debug.Log("Двойной клик"); 
             clicked = 0;
             clicktime = 0;
             isDoubleClicked = true;
