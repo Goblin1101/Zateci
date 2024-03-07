@@ -14,7 +14,7 @@ public class TileMoving : MonoBehaviour
     bool isDoubleClicked;
     float clicked = 0;
     float clicktime = 0;
-    float clickdelay = 0.5f;
+    float clickdelay = 0.3f;
 
     // Start is called before the first frame update
     void Start()
