@@ -5,38 +5,28 @@ using UnityEngine.UI;
 
 public class TileMoving : MonoBehaviour
 {
-    RectTransform tiles_position;
-    Vector3 move_distance = new(-6.3f, 8.8f);
+    RectTransform content_position;
+    Vector3 prev_position = new(361.4f, 222.6f);
 
 
     // Start is called before the first frame update
     void Start()
     {
-        tiles_position = GetComponent<RectTransform>();
+        content_position = GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-//      tiles_position.Translate(new Vector3(-6.3f, 0.2f));
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        Vector3 current_porition = Input.mousePosition;
+        if (Input.GetMouseButton(0))
         {
-            ChoosePrevious();
+            content_position.Translate(current_porition - prev_position );
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow)) 
+        if(Input.GetMouseButtonUp(0)) 
         {
-
-            ChooseNext(); 
+            prev_position = current_porition;
         }
     }
-    void ChooseNext()
-    {
 
-            tiles_position.Translate(move_distance);
-
-    }
-    void ChoosePrevious()
-    {
-            tiles_position.Translate(-move_distance);
-    }
 }
