@@ -5,9 +5,12 @@ using UnityEngine.UI;
 
 public class TileMoving : MonoBehaviour
 {
-    RectTransform content_position;
-    Vector3 prev_position = new(361.4f, 222.6f);
+    [SerializeField]
+    float slide_velocity;
 
+
+    RectTransform content_position;
+    Vector3 prev_position;
 
     // Start is called before the first frame update
     void Start()
@@ -19,13 +22,23 @@ public class TileMoving : MonoBehaviour
     void Update()
     {
         Vector3 current_porition = Input.mousePosition;
+
         
+
         if (Input.GetMouseButton(0))
         {
-            if (current_porition != prev_position)
+
+            if (content_position.localPosition.y < 0) { content_position.Translate(new Vector3(0, Time.deltaTime)); }
+            if (content_position.localPosition.y > 25) { content_position.Translate(new Vector3(0, -Time.deltaTime)); }
+
+            if ((current_porition != prev_position) && content_position.localPosition.y >= 0.0f && content_position.localPosition.y <= 25.0f)
             {
-                content_position.Translate((new Vector3(0,prev_position.y - current_porition.y).normalized)*0.1f);
+
+                content_position.Translate(slide_velocity * Time.deltaTime * new Vector3(0, current_porition.y - prev_position.y).normalized);
             }
+
+            
+
             prev_position = current_porition;
         }
 
