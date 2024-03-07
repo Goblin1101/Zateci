@@ -26,7 +26,7 @@ public class TileMoving : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 current_porition = Input.mousePosition;
+        Vector3 current_porition = Input.mousePosition * 100;
 
         #region DoubleClick
 
@@ -41,7 +41,7 @@ public class TileMoving : MonoBehaviour
             clicked = 0;
             clicktime = 0;
             isDoubleClicked = true;
-            content_position.Translate(new Vector3(0, 13));
+            content_position.Translate(new Vector3(0, 1300));
         }
         else if (clicked > 2 || Time.time - clicktime > 1)
         {
@@ -53,13 +53,13 @@ public class TileMoving : MonoBehaviour
         if (Input.GetMouseButton(0) && isDoubleClicked)
         {
 
-            if (content_position.localPosition.y < 13) { content_position.Translate(new Vector3(0, 13f - content_position.localPosition.y));Debug.Log("¬низ"); }
-            if (content_position.localPosition.y > 25) { content_position.Translate(new Vector3(0, - (content_position.localPosition.y - 25f))); Debug.Log("¬верх"); }
-
+            if (content_position.localPosition.y < 13) { content_position.Translate(new Vector3(0, (13f - content_position.localPosition.y) * 100)); /*Debug.Log("¬низ");*/ }
+            if (content_position.localPosition.y > 25) { content_position.Translate(new Vector3(0, - (content_position.localPosition.y - 25f)*100)); /*Debug.Log("¬верх");*/ }
+            
             if ((current_porition != prev_position) && content_position.localPosition.y >= 13f && content_position.localPosition.y <= 25.0f)
             {
 
-                content_position.Translate(slide_velocity * Time.deltaTime * new Vector3(0, current_porition.y - prev_position.y).normalized);
+                content_position.Translate(slide_velocity * Time.deltaTime * (new Vector3(0, current_porition.y - prev_position.y).normalized * 100));
             }
 
             
