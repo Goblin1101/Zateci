@@ -19,14 +19,16 @@ public class TileMoving : MonoBehaviour
     void Update()
     {
         Vector3 current_porition = Input.mousePosition;
+        
         if (Input.GetMouseButton(0))
         {
-            content_position.Translate(current_porition - prev_position );
-        }
-        if(Input.GetMouseButtonUp(0)) 
-        {
+            if (current_porition != prev_position)
+            {
+                content_position.Translate((new Vector3(0,prev_position.y - current_porition.y).normalized)*0.1f);
+            }
             prev_position = current_porition;
         }
+
     }
 
 }
