@@ -16,6 +16,11 @@ public class TileMoving : MonoBehaviour
     float clicktime = 0;
     float clickdelay = 0.3f;
 
+    [SerializeField]
+    float max_time;
+
+    float time;
+    bool timer = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +31,7 @@ public class TileMoving : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         Vector3 current_porition = Input.mousePosition * 100;
 
         #region DoubleClick
@@ -37,7 +43,7 @@ public class TileMoving : MonoBehaviour
         }
         if (clicked > 1 && Time.time - clicktime < clickdelay)
         {
-          //Debug.Log("ƒвойной клик"); 
+            //Debug.Log("ƒвойной клик"); 
             clicked = 0;
             clicktime = 0;
             isDoubleClicked = true;
@@ -54,19 +60,43 @@ public class TileMoving : MonoBehaviour
         {
 
             if (content_position.localPosition.y < 13) { content_position.Translate(new Vector3(0, (13f - content_position.localPosition.y) * 100)); /*Debug.Log("¬низ");*/ }
-            if (content_position.localPosition.y > 25) { content_position.Translate(new Vector3(0, - (content_position.localPosition.y - 25f)*100)); /*Debug.Log("¬верх");*/ }
-            
+            if (content_position.localPosition.y > 25) { content_position.Translate(new Vector3(0, -(content_position.localPosition.y - 25f) * 100)); /*Debug.Log("¬верх");*/ }
+
             if ((current_porition != prev_position) && content_position.localPosition.y >= 13f && content_position.localPosition.y <= 25.0f)
             {
 
                 content_position.Translate(slide_velocity * Time.deltaTime * (new Vector3(0, current_porition.y - prev_position.y).normalized * 100));
             }
 
-            
+
 
             prev_position = current_porition;
         }
         #endregion
+
+        #region AFK_Timer
+
+        if (isDoubleClicked)
+        {
+            timer = true;
+            
+            if (timer)
+            {
+                if (Input.GetMouseButton(0)) { time = 0; }
+                time += Time.deltaTime;
+                Debug.Log(time);
+            }
+            if (time >= max_time)
+            {
+                timer = false;
+                time = 0;
+                isDoubleClicked = false;
+                content_position.Translate(0, -(content_position.localPosition.y * 100), 0);
+            }
+        }
+
+        #endregion
     }
+
 
 }
