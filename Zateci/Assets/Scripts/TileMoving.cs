@@ -84,7 +84,7 @@ public class TileMoving : MonoBehaviour
             {
                 if (Input.GetMouseButton(0)) { time = 0; }
                 time += Time.deltaTime;
-                Debug.Log(time);
+      //        Debug.Log(time);
             }
             if (time >= max_time)
             {
