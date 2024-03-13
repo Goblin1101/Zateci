@@ -454,6 +454,14 @@ PrefabInstance:
       propertyPath: max_touch_time
       value: 0.11
       objectReference: {fileID: 0}
+    - target: {fileID: 7621738758898141617, guid: 9d82760b75cb1064d9de72194bcc1de9, type: 3}
+      propertyPath: min_touch_time
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7621738758898141617, guid: 9d82760b75cb1064d9de72194bcc1de9, type: 3}
+      propertyPath: slide_velocity
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8881231331837780765, guid: 9d82760b75cb1064d9de72194bcc1de9, type: 3}
       propertyPath: m_Name
       value: "\u0417\u0430\u0442\u0435\u0441\u044C"
