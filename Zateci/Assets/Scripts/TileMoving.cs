@@ -65,7 +65,7 @@ public class TileMoving : MonoBehaviour
             if (touch_time <= max_touch_time)
             {
                 touch_time += Time.deltaTime;
-                Debug.Log(touch_time);
+         //     Debug.Log(touch_time);
             }
             else
             {
@@ -86,7 +86,7 @@ public class TileMoving : MonoBehaviour
         else if (Input.GetMouseButtonUp(0) && isDoubleClicked)
         {
             touch_time = 0;
-            Debug.Log("Обнуление");
+       //   Debug.Log("Обнуление");
         }
         #endregion
 
