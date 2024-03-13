@@ -17,9 +17,13 @@ public class TileMoving : MonoBehaviour
     float clickdelay = 0.3f;
 
     [SerializeField]
-    float max_time;
+    float max_afk_time;
+    [SerializeField]
+    float max_touch_time;
 
-    float time;
+
+    float touch_time = 0;
+    float afk_time;
     bool timer = false;
     // Start is called before the first frame update
     void Start()
@@ -47,7 +51,7 @@ public class TileMoving : MonoBehaviour
             clicked = 0;
             clicktime = 0;
             isDoubleClicked = true;
-            content_position.Translate(new Vector3(0, 1300));
+            content_position.Translate(new Vector3(0, 1400));
         }
         else if (clicked > 2 || Time.time - clicktime > 1)
         {
@@ -58,19 +62,31 @@ public class TileMoving : MonoBehaviour
         #region Sliding
         if (Input.GetMouseButton(0) && isDoubleClicked)
         {
-
-            if (content_position.localPosition.y < 13) { content_position.Translate(new Vector3(0, (13f - content_position.localPosition.y) * 100)); /*Debug.Log("¬низ");*/ }
-            if (content_position.localPosition.y > 25) { content_position.Translate(new Vector3(0, -(content_position.localPosition.y - 25f) * 100)); /*Debug.Log("¬верх");*/ }
-
-            if ((current_porition != prev_position) && content_position.localPosition.y >= 13f && content_position.localPosition.y <= 25.0f)
+            if (touch_time <= max_touch_time)
             {
+                touch_time += Time.deltaTime;
+                Debug.Log(touch_time);
+            }
+            else
+            {
+                if (content_position.localPosition.y < 14) { content_position.Translate(new Vector3(0, (14f - content_position.localPosition.y) * 100)); /*Debug.Log("¬низ");*/ }
+                if (content_position.localPosition.y > 25) { content_position.Translate(new Vector3(0, -(content_position.localPosition.y - 25f) * 100)); /*Debug.Log("¬верх");*/ }
 
-                content_position.Translate(slide_velocity * Time.deltaTime * (new Vector3(0, current_porition.y - prev_position.y).normalized * 100));
+                if ((current_porition != prev_position) && content_position.localPosition.y >= 14f && content_position.localPosition.y <= 25.0f)
+                {
+
+                    content_position.Translate(slide_velocity * Time.deltaTime * (new Vector3(0, current_porition.y - prev_position.y).normalized * 100));
+                }
+
             }
 
-
-
             prev_position = current_porition;
+
+        }
+        else if (Input.GetMouseButtonUp(0) && isDoubleClicked)
+        {
+            touch_time = 0;
+            Debug.Log("ќбнуление");
         }
         #endregion
 
@@ -82,14 +98,14 @@ public class TileMoving : MonoBehaviour
             
             if (timer)
             {
-                if (Input.GetMouseButton(0)) { time = 0; }
-                time += Time.deltaTime;
+                if (Input.GetMouseButton(0)) { afk_time = 0; }
+                afk_time += Time.deltaTime;
       //        Debug.Log(time);
             }
-            if (time >= max_time)
+            if (afk_time >= max_afk_time)
             {
                 timer = false;
-                time = 0;
+                afk_time = 0;
                 isDoubleClicked = false;
                 content_position.Translate(0, -(content_position.localPosition.y * 100), 0);
             }
