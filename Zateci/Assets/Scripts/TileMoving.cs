@@ -19,7 +19,7 @@ public class TileMoving : MonoBehaviour
     [SerializeField]
     float max_afk_time;
     [SerializeField]
-    float max_touch_time;
+    float min_touch_time;
 
 
     float touch_time = 0;
@@ -62,7 +62,7 @@ public class TileMoving : MonoBehaviour
         #region Sliding
         if (Input.GetMouseButton(0) && isDoubleClicked)
         {
-            if (touch_time <= max_touch_time)
+            if (touch_time <= min_touch_time)
             {
                 touch_time += Time.deltaTime;
          //     Debug.Log(touch_time);
