@@ -36,6 +36,7 @@ public class VideoControl : MonoBehaviour
 
             if (clicked < 2)
             {
+                
                 player.Pause();
                 player.isLooping = false;
                 clicked++;
@@ -47,7 +48,7 @@ public class VideoControl : MonoBehaviour
         if(clicked == 2)
         {
 
-            if (time <= 1) time += Time.deltaTime;
+            if (time <= 3) time += Time.deltaTime;
             else button.SetActive(true);
         }
 
