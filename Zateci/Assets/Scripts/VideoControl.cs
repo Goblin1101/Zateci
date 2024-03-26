@@ -13,8 +13,7 @@ public class VideoControl : MonoBehaviour
     RawImage texture;
     [SerializeField]
     List<VideoPlayer> playerList;
-    [SerializeField]
-    GameObject button;
+
 
     int clicked;
     float time = 0;
@@ -32,21 +31,16 @@ public class VideoControl : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
 
-            if (clicked < 2)
+            if (clicked <= 2)
             {
                 playerList[clicked].Pause();
                 playerList[clicked].gameObject.SetActive(false);
                 clicked++;
+                if(clicked > 2) { clicked = 0; }
                 playerList[clicked].gameObject.SetActive(true);
                 playerList[clicked].Play();
             }
             
-        }
-        if(clicked == 2)
-        {
-
-            if (time <= 3) time += Time.deltaTime;
-            else button.SetActive(true);
         }
 
     }
