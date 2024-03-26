@@ -280,7 +280,18 @@ PlayerSettings:
   AndroidMinifyDebug: 0
   AndroidValidateAppBundleSize: 1
   AndroidAppBundleSizeToValidate: 150
+<<<<<<< Updated upstream
   m_BuildTargetIcons: []
+=======
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 47eba11ae9ca65a41b8f4c8c78a2f690, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
+>>>>>>> Stashed changes
   m_BuildTargetPlatformIcons:
   - m_BuildTarget: Android
     m_Icons:
