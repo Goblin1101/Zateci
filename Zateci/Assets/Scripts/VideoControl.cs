@@ -10,13 +10,10 @@ using UnityEngine.Video;
 public class VideoControl : MonoBehaviour
 {
     [SerializeField]
-    VideoPlayer player;
-    [SerializeField]
     RawImage texture;
     [SerializeField]
-    List<VideoClip> clipList;
-    [SerializeField]
-    GameObject button;
+    List<VideoPlayer> playerList;
+
 
     int clicked;
     float time = 0;
@@ -34,32 +31,29 @@ public class VideoControl : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
 
-            if (clicked < 2)
+            if (clicked <= 2)
             {
-                player.Pause();
-                player.isLooping = false;
+                playerList[clicked].Pause();
+                playerList[clicked].gameObject.SetActive(false);
                 clicked++;
-                player.clip = clipList[clicked];
-                player.Play();
+                if(clicked > 2) { clicked = 0; }
+                playerList[clicked].gameObject.SetActive(true);
+                playerList[clicked].Play();
             }
             
-        }
-        if(clicked == 2)
-        {
-
-            if (time <= 1) time += Time.deltaTime;
-            else button.SetActive(true);
         }
 
     }
         public void VideoRestart()
     {
-        time = 0;   
-        button.SetActive(false);
-        player.isLooping = true;
-        player.clip = clipList[0];
+        time = 0;
+        playerList[1].gameObject.SetActive(false);
+        playerList[2].gameObject.SetActive(false);
+        playerList[0].gameObject.SetActive(true);
+        playerList[0].Stop() ;
+        playerList[0].Play();
         clicked = 0;
-        player.Play();
+
     }
 
 
