@@ -43,7 +43,8 @@ public class Gif_Anim_Control : MonoBehaviour
             {
                 timer = true;
                 clicked++;
-                Axe_anim.SetTrigger("Axe_hitted");
+                //               Axe_anim.SetTrigger("Axe_hitted");
+                HitAxe();
             }
         }
     }
