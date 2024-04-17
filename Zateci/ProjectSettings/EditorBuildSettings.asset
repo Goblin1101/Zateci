@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: "Assets/Scenes/\u0417\u0430\u0442\u0435\u0441\u044C 1.unity"
-    guid: 5c8d19d21253abf4b93c466e438f5c9a
-  - enabled: 0
     path: "Assets/Scenes/8 \u0417\u0430\u0442\u0435\u0441\u044C.unity"
     guid: 9f1d5375000800243b31393048bf5644
   - enabled: 1
@@ -17,4 +14,25 @@ EditorBuildSettings:
   - enabled: 0
     path: "Assets/Scenes/\u0417\u0430\u0442\u0435\u0441\u044C 2.unity"
     guid: 0c41f6773ce0a4f4ba2fd282e39d40fd
+  - enabled: 0
+    path: "Assets/Scenes/\u0417\u0430\u0442\u0435\u0441\u044C 1.unity"
+    guid: 5c8d19d21253abf4b93c466e438f5c9a
+  - enabled: 0
+    path: "Assets/Scenes/\u0417\u0430\u0442\u0435\u0441\u044C 3.unity"
+    guid: c52b67962c369bd458299497bc67906b
+  - enabled: 0
+    path: "Assets/Scenes/\u0417\u0430\u0442\u0435\u0441\u044C 4.unity"
+    guid: 3f6de8214284c4f46b8c63803c9a6130
+  - enabled: 0
+    path: "Assets/Scenes/\u0417\u0430\u0442\u0435\u0441\u044C 5.unity"
+    guid: 2781dff52d9242547be00abddc6ba2ef
+  - enabled: 0
+    path: "Assets/Scenes/\u0417\u0430\u0442\u0435\u0441\u044C 6.unity"
+    guid: bece99a007b0890449c3bbd41fa8517f
+  - enabled: 0
+    path: "Assets/Scenes/\u0417\u0430\u0442\u0435\u0441\u044C 7.unity"
+    guid: acdce66b488b2784c9c1a0bbe9161086
+  - enabled: 0
+    path: "Assets/Scenes/\u0417\u0430\u0442\u0435\u0441\u044C 8.unity"
+    guid: 0e62ce2b3b6a86a4889a9befd41e9ddd
   m_configObjects: {}

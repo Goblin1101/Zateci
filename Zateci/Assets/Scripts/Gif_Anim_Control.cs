@@ -25,7 +25,7 @@ public class Gif_Anim_Control : MonoBehaviour
         if (timer)
         {
             time += Time.deltaTime;
-            if (time >= 0.8f)
+            if (time >= 0.8)
             {
                 timer = false;
                 time = 0;
